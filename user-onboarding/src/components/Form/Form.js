@@ -35,11 +35,14 @@ const Form = (props) => {
         email: yup.string().email("Incorrect email format").test("emailCheck", "That email is already taken", (item) => item !== undefined ? item !== "waffle@syrup.com" : true).required("Email is a required field"),
         password: yup.string().required("Password is a correct field"),
         role: yup.string().oneOf(["project manager","designer","frontend engineer","backend engineer"]),
-        favoriteColor: yup.string().matches(/#{1}[\d\w]/, {message: "The color value must be a hexidecimal value"}),
-        terms: yup.boolean().oneOf([true]).test("is-true", "Must agree to our terms", val => val === true)
+        // favoriteColor: yup.string().matches(/#{1}[\d\w]/, {message: "The color value must be a hexidecimal value"}),
+        terms: yup.boolean().test("is-true", "Must agree to our terms", val => val === true)
     });
     
     useEffect(() => {
+        document.querySelector('input[data-cy="favoriteColor"]').addEventListener('click', (e) => {
+            console.log(e);
+        });
         formSchema.isValid(formState).then(isValid => {
             setButtonDisabled(!isValid);
         });
@@ -139,7 +142,7 @@ const Form = (props) => {
                     {errors.role.length > 0 ? <p className="error" data-cy="error">{errors.role}</p> : null}
                 </label>
                 <label htmlFor="terms" data-cy="terms" className="terms">
-                    <input type="checkbox" data-cy="termsInput" id="terms" name="terms" checked={formState.terms} onChange={handleChanges} />
+                    <input type="checkbox" data-cy="termsInput" id="terms" name="terms" value="true" checked={formState.terms} onChange={handleChanges} />
                     Terms of Service
                     <span className="checkmark"></span>
                     {errors.terms.length > 0 ? <p className="error" data-cy="error">{errors.terms}</p> : null}

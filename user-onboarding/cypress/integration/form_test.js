@@ -32,9 +32,9 @@ describe('My Form', () => {
 
     it('Asserts that the color field is present', () => {
         cy.get('[data-cy="favoriteColor"]')
-            .should('be.visible')
+            // .should('be.visible')
             .invoke('val', '#44ff88')
-            .trigger('input');
+            .trigger('mousedown', 'topRight')
     });
 
     it('Asserts that the role is present and selectable', () => {
@@ -57,23 +57,37 @@ describe('My Form', () => {
             .click();
     });
 
-    it('Asserts that empty form fields are properly validated', () => {
-        cy.get('[data-cy="name"]')
-            .clear();
-
+    it('Asserts that the email is a valid email', () => {
         cy.get('[data-cy="email"]')
-            .clear();
-
-        cy.get('[data-cy="password"]')
-            .clear();
-
-        cy.get('[data-cy="role"]')
-            .select(''); 
-
-        cy.get('[data-cy="terms"]')
-            .click();
-
-        cy.get('[data-cy="error"]')
-            .should('be.visible');
+            .type('dave@')
+            .should('contain', '@')
+            .should('contain', '.')
     });
+
+    // it('Asserts that empty form fields are properly validated', () => {
+    //     cy.get('[data-cy="name"]')
+    //         .clear();
+
+    //     cy.get('[data-cy="email"]')
+    //         .clear();
+
+    //     cy.get('[data-cy="password"]')
+    //         .clear();
+
+    //     cy.get('[data-cy="role"]')
+    //         .select(''); 
+
+    //     cy.get('[data-cy="terms"]')
+    //         .click();
+
+    //     cy.get('[data-cy="error"]')
+    //         .should('be.visible');
+    // });
 });
+
+describe('color test', () => {
+    it('should show color well', () => {
+        cy.get('[data-cy="favoriteColor"]')
+            .dblclick()
+    })
+})
