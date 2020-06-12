@@ -110,26 +110,26 @@ const Form = (props) => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">
                     Name
-                    <input type="text" id="name" name="name" value={formState.name} onChange={handleChanges} />
+                    <input type="text" data-cy="name" id="name" name="name" value={formState.name} onChange={handleChanges} />
                     {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
                 </label>
                 <label htmlFor="email">
                     Email
-                    <input type="text" id="email" name="email" value={formState.email} onChange={handleChanges} />
+                    <input type="text" data-cy="email" id="email" name="email" value={formState.email} onChange={handleChanges} />
                     {errors.email.length > 0 ? <p className="error">{errors.email}</p> : null}
                 </label>
                 <label htmlFor="password">
                     Password
-                    <input type="text" id="password" name="password" value={formState.password} onChange={handleChanges} />
+                    <input type="text" data-cy="password" id="password" name="password" value={formState.password} onChange={handleChanges} />
                     {errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
                 </label>
                 <label htmlFor="favoriteColor">
                     What is your favorite color?
-                    <input type="color" name="favoriteColor" id="favoriteColor" onChange={handleChanges} />
+                    <input type="color" data-cy="favoriteColor" name="favoriteColor" id="favoriteColor" onChange={handleChanges} />
                 </label>
                 <label htmlFor="role">
                     Role
-                    <select name="role" id="role" onChange={handleChanges}>
+                    <select name="role" data-cy="role" id="role" onChange={handleChanges}>
                         <option value="">--Please select a role--</option>
                         <option value="project manager">Project Manager</option>
                         <option value="designer">Designer</option>
@@ -139,7 +139,7 @@ const Form = (props) => {
                     {errors.role.length > 0 ? <p className="error">{errors.role}</p> : null}
                 </label>
                 <label htmlFor="terms" className="terms">
-                    <input type="checkbox" id="terms" name="terms" checked={formState.terms} onChange={handleChanges} />
+                    <input type="checkbox" data-cy="terms" id="terms" name="terms" checked={formState.terms} onChange={handleChanges} />
                     Terms of Service
                     <span className="checkmark"></span>
                     {errors.terms.length > 0 ? <p className="error">{errors.terms}</p> : null}
