@@ -111,17 +111,17 @@ const Form = (props) => {
                 <label htmlFor="name">
                     Name
                     <input type="text" data-cy="name" id="name" name="name" value={formState.name} onChange={handleChanges} />
-                    {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
+                    {errors.name.length > 0 ? <p className="error" data-cy="error">{errors.name}</p> : null}
                 </label>
                 <label htmlFor="email">
                     Email
                     <input type="text" data-cy="email" id="email" name="email" value={formState.email} onChange={handleChanges} />
-                    {errors.email.length > 0 ? <p className="error">{errors.email}</p> : null}
+                    {errors.email.length > 0 ? <p className="error" data-cy="error">{errors.email}</p> : null}
                 </label>
                 <label htmlFor="password">
                     Password
                     <input type="text" data-cy="password" id="password" name="password" value={formState.password} onChange={handleChanges} />
-                    {errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
+                    {errors.password.length > 0 ? <p className="error" data-cy="error">{errors.password}</p> : null}
                 </label>
                 <label htmlFor="favoriteColor">
                     What is your favorite color?
@@ -136,15 +136,15 @@ const Form = (props) => {
                         <option value="frontend engineer">Frontend Engineer</option>
                         <option value="backend engineer">Backend Engineer</option>
                     </select>
-                    {errors.role.length > 0 ? <p className="error">{errors.role}</p> : null}
+                    {errors.role.length > 0 ? <p className="error" data-cy="error">{errors.role}</p> : null}
                 </label>
-                <label htmlFor="terms" className="terms">
-                    <input type="checkbox" data-cy="terms" id="terms" name="terms" checked={formState.terms} onChange={handleChanges} />
+                <label htmlFor="terms" data-cy="terms" className="terms">
+                    <input type="checkbox" data-cy="termsInput" id="terms" name="terms" checked={formState.terms} onChange={handleChanges} />
                     Terms of Service
                     <span className="checkmark"></span>
-                    {errors.terms.length > 0 ? <p className="error">{errors.terms}</p> : null}
+                    {errors.terms.length > 0 ? <p className="error" data-cy="error">{errors.terms}</p> : null}
                 </label>
-                <button type="submit" disabled={buttonDisabled}>Submit</button>
+                <button type="submit" data-cy="submit" disabled={buttonDisabled}>Submit</button>
             </form>
             <pre>{JSON.stringify(post)}</pre>
         </div>
